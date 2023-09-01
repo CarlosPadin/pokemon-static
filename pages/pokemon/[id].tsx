@@ -3,7 +3,7 @@ import { useState } from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 
-import confetti from 'canvas-confetti'
+import confetti from "canvas-confetti";
 
 import { localFavorites } from "@/utils";
 import { PokemonDetails } from "@/interfaces";
@@ -33,12 +33,10 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         origin: {
           x: 1,
           y: 0,
-        }
-      })
+        },
+      });
     }
   };
-  
-  
 
   return (
     <Layout
@@ -75,7 +73,9 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 color="info"
                 onClick={onToggleFavorites}
               >
-                <Typography variant="button">{isInFavorites ? 'En Favoritos' : 'Guardar en Favoritos'}</Typography>
+                <Typography variant="button">
+                  {isInFavorites ? "En Favoritos" : "Guardar en Favoritos"}
+                </Typography>
               </Button>
             </Stack>
             <Divider
@@ -124,7 +124,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     paths: pokemons101.map((id) => ({
       params: { id },
     })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -134,10 +134,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const pokemon = await getPokemonInfo(id);
 
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       pokemon,
     },
+    revalidate: 86400, //60*60*24
   };
 };
 
