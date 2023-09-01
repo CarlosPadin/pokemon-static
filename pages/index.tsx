@@ -19,7 +19,7 @@ const HomePage: NextPage<Props> = ({ pokemons }) => {
             <PokemonCard pokemon={pokemon} />
           </Grid>
         ))}
-      </Grid> 
+      </Grid>
     </Layout>
   );
 };

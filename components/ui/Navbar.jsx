@@ -20,17 +20,17 @@ const NavBar = () => {
               height={90}
             />
             <NextLink href="/" style={{ textDecoration: 'none'}} passHref>
-              <Link underline="none" color="inherit">
+              {/* <Link underline="none" color="inherit"> */}
                 <Typography variant="h3" color="white">
                   <b>P</b>okemon
                 </Typography>
-              </Link>
+              {/* </Link> */}
             </NextLink>
           </Stack>
           <NextLink href='/favorites' style={{ textDecoration: 'none'}} passHref>
-            <Link underline="none" color="inherit" >
+            {/* <Link underline="none" color="inherit" > */}
               <Typography variant="h6" color="white">Favoritos</Typography>
-            </Link>
+            {/* </Link> */}
           </NextLink>
         </Stack>
       </AppBar>
