@@ -13,4 +13,4 @@ Para ejecutarlo acceder a la web xxxxx o ejecutar npm run start
 
 * It is designed to access the cards by their name or id for practical purposes.
 
-* To run it, access the web at xxxxx or execute __npm run start__.
+* To run it, access the web at https://my-portfolio-five-green-37.vercel.app/ or execute __npm run start__.
