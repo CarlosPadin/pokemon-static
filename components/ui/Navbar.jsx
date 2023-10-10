@@ -1,6 +1,6 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import { AppBar, Link, Stack, Typography } from "@mui/material";
+import { AppBar, Stack, Typography } from "@mui/material";
 
 const NavBar = () => {
   return (
@@ -20,17 +20,13 @@ const NavBar = () => {
               height={90}
             />
             <NextLink href="/" style={{ textDecoration: 'none'}} passHref>
-              {/* <Link underline="none" color="inherit"> */}
                 <Typography variant="h3" color="white">
                   <b>P</b>okemon
                 </Typography>
-              {/* </Link> */}
             </NextLink>
           </Stack>
           <NextLink href='/favorites' style={{ textDecoration: 'none'}} passHref>
-            {/* <Link underline="none" color="inherit" > */}
               <Typography variant="h6" color="white">Favoritos</Typography>
-            {/* </Link> */}
           </NextLink>
         </Stack>
       </AppBar>

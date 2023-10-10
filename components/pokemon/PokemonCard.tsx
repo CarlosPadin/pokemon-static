@@ -9,6 +9,7 @@ import {
   Divider,
   Stack,
   Typography,
+  capitalize,
 } from "@mui/material";
 
 interface Props {
@@ -23,7 +24,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
  }
 
   return (
-    <Card sx={{ width: 200 }}>
+    <Card sx={{ maxWidth: '100%', maxHeight: '100%' }}>
       <CardActionArea onClick={onClickHandler}>
       <CardMedia component='img' height={200} alt="pokemon pic" image={pokemon.img} />
         <CardContent>
@@ -31,7 +32,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
             <Typography variant="button">{pokemon.id}</Typography>
             <Divider>-</Divider>
             <Typography variant="h6">
-              {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+              {capitalize(pokemon.name)}
             </Typography>
           </Stack>
         </CardContent>

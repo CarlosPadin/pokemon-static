@@ -8,7 +8,7 @@ import confetti from "canvas-confetti";
 import { localFavorites } from "@/utils";
 import { PokemonDetails } from "@/interfaces";
 import Layout from "@/components/layouts/Layout";
-import { Button, Card, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Button, Card, Divider, Grid, Stack, Typography, capitalize } from "@mui/material";
 import getPokemonInfo from "@/utils/getPokemonInfo";
 
 interface Props {
@@ -41,9 +41,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   return (
     <Layout
       title={
-        "PokemonApp | " +
-        pokemon.name[0].toUpperCase() +
-        pokemon.name.substring(1)
+        "PokemonApp | " + capitalize(pokemon.name)
       }
     >
       <Grid

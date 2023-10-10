@@ -13,7 +13,7 @@ interface Props {
 const HomePage: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout title="Pokemon App">
-      <Grid container spacing={3} sx={{ padding: "10rem 7rem" }}>
+      <Grid container spacing={3} sx={{ paddingTop: "10rem", paddingX: '1rem' }}>
         {pokemons.map((pokemon) => (
           <Grid item key={pokemon.id} xs={6} sm={4} md={3} lg={2}>
             <PokemonCard pokemon={pokemon} />

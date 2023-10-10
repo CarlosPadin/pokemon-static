@@ -9,7 +9,7 @@ import pokeApi from "@/api/pokeApi";
 import { localFavorites } from "@/utils";
 import { PokemonDetails, PokemonListResponse } from "@/interfaces";
 import Layout from "@/components/layouts/Layout";
-import { Button, Card, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Button, Card, Divider, Grid, Stack, Typography, capitalize } from "@mui/material";
 import getPokemonInfo from "@/utils/getPokemonInfo";
 
 interface Props {
@@ -45,8 +45,7 @@ const PokemonNamePage: NextPage<Props> = ({ pokemon }) => {
     <Layout
       title={
         "PokemonApp | " +
-        pokemon.name[0].toUpperCase() +
-        pokemon.name.substring(1)
+        capitalize(pokemon.name)
       }
     >
       <Grid

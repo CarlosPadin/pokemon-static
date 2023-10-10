@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Stack, Typography, Divider } from "@mui/material";
 import { useRouter } from 'next/router';
+import { Grid, Card, CardActionArea, CardMedia, CardContent, Stack, Typography, Divider } from "@mui/material";
 
 interface Props {
     id: number,
@@ -27,11 +27,7 @@ const FavoritesPokemonsCard: FC<Props> = ({ id }) => {
           <CardContent>
             <Stack direction="row" justifyContent="center" alignItems="center">
               <Typography variant="button">{id}</Typography>
-              <Divider>-</Divider>
-              {/* <Typography variant="h6">
-                          {pokemon.name[0].toUpperCase() +
-                            pokemon.name.substring(1)}
-                        </Typography> */}
+              {/* <Divider>-</Divider> */}
             </Stack>
           </CardContent>
         </CardActionArea>
