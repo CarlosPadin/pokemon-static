@@ -3,13 +3,21 @@ import { useState } from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 
-import confetti from 'canvas-confetti'
+import confetti from "canvas-confetti";
 
 import pokeApi from "@/api/pokeApi";
 import { localFavorites } from "@/utils";
 import { PokemonDetails, PokemonListResponse } from "@/interfaces";
 import Layout from "@/components/layouts/Layout";
-import { Button, Card, Divider, Grid, Stack, Typography, capitalize } from "@mui/material";
+import {
+  Button,
+  Card,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+  capitalize,
+} from "@mui/material";
 import getPokemonInfo from "@/utils/getPokemonInfo";
 
 interface Props {
@@ -34,24 +42,17 @@ const PokemonNamePage: NextPage<Props> = ({ pokemon }) => {
         origin: {
           x: 1,
           y: 0,
-        }
-      })
+        },
+      });
     }
   };
-  
-  
 
   return (
-    <Layout
-      title={
-        "PokemonApp | " +
-        capitalize(pokemon.name)
-      }
-    >
+    <Layout title={"PokemonApp | " + capitalize(pokemon.name)}>
       <Grid
         container
         spacing={1}
-        sx={{ padding: "7rem", alignItems: "center" }}
+        sx={{ paddingY: "7rem", paddingX: "3%", alignItems: "center" }}
       >
         <Grid item xs={12} sm={4}>
           <Image
@@ -59,23 +60,28 @@ const PokemonNamePage: NextPage<Props> = ({ pokemon }) => {
               pokemon.sprites.other?.["official-artwork"].front_default ||
               "/no-image.png"
             }
-            width={470}
-            height={470}
+            width={400}
+            height={400}
             alt={pokemon.name + "image"}
           />
         </Grid>
         <Grid item xs={12} sm={8}>
           <Card sx={{ padding: 2 }}>
-            <Stack direction="row" justifyContent="space-between">
-              <Typography variant="h2">
-                {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
-              </Typography>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              spacing={2}
+            >
+              <Typography variant="h4">{capitalize(pokemon.name)}</Typography>
               <Button
                 variant={isInFavorites ? "contained" : "outlined"}
                 color="info"
                 onClick={onToggleFavorites}
               >
-                <Typography variant="button">{isInFavorites ? 'En Favoritos' : 'Guardar en Favoritos'}</Typography>
+                <Typography variant="button">
+                  {isInFavorites ? "En Favoritos" : "Guardar en Favoritos"}
+                </Typography>
               </Button>
             </Stack>
             <Divider
@@ -119,13 +125,13 @@ const PokemonNamePage: NextPage<Props> = ({ pokemon }) => {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { data } = await pokeApi.get<PokemonListResponse>(`/pokemon?limit=101`);
-  const pokemonsNames: string[] = data.results.map(pokemon => pokemon.name);
+  const pokemonsNames: string[] = data.results.map((pokemon) => pokemon.name);
 
   return {
     paths: pokemonsNames.map((name) => ({
       params: { name },
     })),
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 
@@ -138,10 +144,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!pokemon) {
     return {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
-      }
-    }
+      },
+    };
   }
 
   return {

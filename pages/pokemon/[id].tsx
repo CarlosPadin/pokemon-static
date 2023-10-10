@@ -8,7 +8,15 @@ import confetti from "canvas-confetti";
 import { localFavorites } from "@/utils";
 import { PokemonDetails } from "@/interfaces";
 import Layout from "@/components/layouts/Layout";
-import { Button, Card, Divider, Grid, Stack, Typography, capitalize } from "@mui/material";
+import {
+  Button,
+  Card,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+  capitalize,
+} from "@mui/material";
 import getPokemonInfo from "@/utils/getPokemonInfo";
 
 interface Props {
@@ -39,15 +47,11 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   };
 
   return (
-    <Layout
-      title={
-        "PokemonApp | " + capitalize(pokemon.name)
-      }
-    >
+    <Layout title={"PokemonApp | " + capitalize(pokemon.name)}>
       <Grid
         container
         spacing={1}
-        sx={{ padding: "7rem", alignItems: "center" }}
+        sx={{ paddingY: "7rem", paddingX: "3%", alignItems: "center" }}
       >
         <Grid item xs={12} sm={4}>
           <Image
@@ -62,10 +66,13 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Card sx={{ padding: 2 }}>
-            <Stack direction="row" justifyContent="space-between">
-              <Typography variant="h2">
-                {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
-              </Typography>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              spacing={2}
+            >
+              <Typography variant="h4">{capitalize(pokemon.name)}</Typography>
               <Button
                 variant={isInFavorites ? "contained" : "outlined"}
                 color="info"
