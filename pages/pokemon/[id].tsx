@@ -59,8 +59,8 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
               pokemon.sprites.other?.["official-artwork"].front_default ||
               "/no-image.png"
             }
-            width={470}
-            height={470}
+            width={400}
+            height={400}
             alt={pokemon.name + "image"}
           />
         </Grid>
